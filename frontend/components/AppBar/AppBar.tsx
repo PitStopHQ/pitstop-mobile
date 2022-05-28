@@ -2,6 +2,8 @@ import {useWalletConnect} from '@walletconnect/react-native-dapp';
 import {LinearGradient} from 'expo-linear-gradient';
 import React from 'react';
 import {Image, StatusBar, Text, TouchableOpacity} from 'react-native';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store/rootReducer';
 import theme from '../../theme';
 import styles from './AppBar.style';
 
@@ -12,6 +14,9 @@ const AppBar = ({title}: IAppBarProps) => {
     return connector.killSession();
   }, [connector]);
 
+  const {user} = useSelector((state: RootState) => state.user);
+  const {bootLoading} = useSelector((state: RootState) => state.boot);
+
   return (
     <>
       <StatusBar animated={true} backgroundColor={theme.colors.redOne} />
@@ -21,14 +26,16 @@ const AppBar = ({title}: IAppBarProps) => {
         colors={[theme.colors.redOne, theme.colors.redTwo]}
         style={styles.titleView}>
         <Text style={styles.title}>{title}</Text>
-        <TouchableOpacity onPress={killSession}>
-          <Image
-            style={styles.profileLogo}
-            source={{
-              uri: 'https://reactnative.dev/img/tiny_logo.png',
-            }}
-          />
-        </TouchableOpacity>
+        {!bootLoading && user && user.pfp && (
+          <TouchableOpacity onPress={killSession}>
+            <Image
+              style={styles.profileLogo}
+              source={{
+                uri: user.pfp,
+              }}
+            />
+          </TouchableOpacity>
+        )}
       </LinearGradient>
     </>
   );

@@ -1,25 +1,13 @@
-import {View, Text, ScrollView, FlatList, ImageBackground} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+import {FlatList, ImageBackground, Text, View} from 'react-native';
+import {useSelector} from 'react-redux';
 import AppBar from '../../components/AppBar/AppBar';
-
+import {RootState} from '../../store/rootReducer';
 import styles from './Leaderboard.style';
 
 const Leaderboard = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [leaderboard, setLeaderboard] = useState([]);
-
-  useEffect(() => {
-    fetchLeaderboard();
-  }, []);
-
-  async function fetchLeaderboard() {
-    const leaderboardData = await fetch(
-      `https://playpitstop.racing/api/leaderboard`,
-    );
-    const leaderboard = await leaderboardData.json();
-    setLeaderboard(leaderboard.leaderboard);
-    setIsLoading(false);
-  }
+  const {bootLoading} = useSelector((state: RootState) => state.boot);
+  const {leaderboard} = useSelector((state: RootState) => state.leaderboard);
 
   return (
     <View style={styles.screen}>
@@ -30,12 +18,12 @@ const Leaderboard = () => {
         }}
         style={{width: '100%', height: '100%'}}>
         <View style={styles.container}>
-          {isLoading ? (
+          {bootLoading ? (
             <Text style={{color: '#fff'}}>Loading</Text>
           ) : (
             <FlatList
               data={leaderboard}
-              extraData={isLoading}
+              extraData={bootLoading}
               renderItem={({item, index}) => {
                 return (
                   <View style={styles.leaderboardRow}>
