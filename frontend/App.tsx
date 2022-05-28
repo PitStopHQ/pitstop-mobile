@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import Compete from './screens/Compete/Compete';
 import Leaderboard from './screens/Leaderboard/Leaderboard';
 import Mint from './screens/Mint/Mint';
 
@@ -14,6 +15,7 @@ export default function App(): JSX.Element {
     //   <Text testID="tid-message">'Hello world</Text>
     // </View>
     // <Mint />
-    <Leaderboard />
+    // <Leaderboard />
+    <Compete />
   );
 }

@@ -3,15 +3,16 @@ import React from 'react';
 import {LinearGradient} from 'expo-linear-gradient';
 
 import styles from './AppBar.style';
+import theme from '../../theme';
 
 const AppBar = ({title}: IAppBarProps) => {
   return (
     <>
-      <StatusBar animated={true} backgroundColor="#CB2D3E" />
+      <StatusBar animated={true} backgroundColor={theme.colors.redOne} />
       <LinearGradient
         start={[0, 1]}
         end={[1, 0]}
-        colors={['#CB2D3E', '#EF473A']}
+        colors={[theme.colors.redOne, theme.colors.redTwo]}
         style={styles.titleView}>
         <Text style={styles.title}>{title}</Text>
         <Image
