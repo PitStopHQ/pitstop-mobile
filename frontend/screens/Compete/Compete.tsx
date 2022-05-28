@@ -1,13 +1,19 @@
 import React from 'react';
 import {ImageBackground, ScrollView, View} from 'react-native';
+import {useSelector} from 'react-redux';
 import AppBar from '../../components/AppBar/AppBar';
 import BackConstructor from '../../components/BackConstructor/BackConstructor';
 import BackDriver from '../../components/BackDriver/BackDriver';
 import UpcomingRace from '../../components/UpcomingRace/UpcomingRace';
+import {RootState} from '../../store/rootReducer';
 
 import styles from './Compete.style';
 
 const Compete = () => {
+  const {bootLoading} = useSelector((state: RootState) => state.boot);
+
+  console.log('bootLoading', bootLoading);
+
   return (
     <View style={styles.screen}>
       <AppBar title="Compete" />

@@ -1,4 +1,5 @@
 import {IAction} from '../storeInterfaces';
+// import {getData, removeData, storeData} from '../../util/asyncStorage';
 
 import {AUTH_SUCCESS, SIGN_OUT} from './types';
 
@@ -11,15 +12,14 @@ const initialState: IAuthState = {
 const authReducer = (state = initialState, action: IAction) => {
   switch (action.type) {
     case AUTH_SUCCESS:
-      localStorage.setItem('token', action.payload.token);
+      // storeData('token', action.payload.token);
       return {
-        ...state,
         address: action.payload.address,
         token: action.payload.token,
         authenticated: true,
       };
     case SIGN_OUT:
-      localStorage.removeItem('token');
+      // removeData('token');
       return {
         ...state,
         address: '',
