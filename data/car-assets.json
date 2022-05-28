@@ -1,0 +1,52 @@
+[
+  {
+    "path": "alfa-romeo.png",
+    "hash": "QmbpFmXN1GmEr6W6bM42qKzqYNNBQhoUZfXf9Xo7vS2pRi",
+    "size": 50248
+  },
+  {
+    "path": "mclaren.png",
+    "hash": "QmfH23feZp4PiH9qsuFNDVa1gdPcrJ2bPYddjdBGBoyi7L",
+    "size": 57660
+  },
+  {
+    "path": "alphatauri.png",
+    "hash": "QmQVfCY3YdEBDVoZwejmTzCaVYxrhrU91H1YvAvmBAWfWb",
+    "size": 51202
+  },
+  {
+    "path": "alpine.png",
+    "hash": "QmcDmjW328Ur3sCzwwD9Gkf65TJmktpFew1jvxdNTEBaK8",
+    "size": 54994
+  },
+  {
+    "path": "aston-martin.png",
+    "hash": "QmWfLgNJfqYy5aAj6Fz5QDEizL9n2xfq1Z2DJTTvG9Ec77",
+    "size": 58142
+  },
+  {
+    "path": "ferrari.png",
+    "hash": "QmadLxvhsEz4fdvYZHsuEPJf62LNERCv4nAgjjC3yKgYQL",
+    "size": 51737
+  },
+  {
+    "path": "haas.png",
+    "hash": "QmUfxrnhk71dkHUxZdy5X7oozUexdbxDw9LC26bXBHc8aN",
+    "size": 45244
+  },
+  {
+    "path": "mercedes.png",
+    "hash": "QmZDgyWvvrEPyuSyjoFLVNsck21Do7uS8662iUErSfcPFt",
+    "size": 53772
+  },
+  {
+    "path": "williams.png",
+    "hash": "QmdjC6HSeLj226esUovURdBEb9po5VzVNyAcruoPjLjfys",
+    "size": 50619
+  },
+  {
+    "path": "red-bull.png",
+    "hash": "QmbZ9KSnkCvX7TKLaakSmBQxRdsegqjaywK8GWUp879yqs",
+    "size": 56088
+  }
+]
