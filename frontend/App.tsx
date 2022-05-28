@@ -3,6 +3,8 @@ import {StyleSheet, Text, View} from 'react-native';
 import Compete from './screens/Compete/Compete';
 import Leaderboard from './screens/Leaderboard/Leaderboard';
 import Mint from './screens/Mint/Mint';
+import {Provider} from 'react-redux';
+import store from './store';
 
 const styles = StyleSheet.create({
   center: {alignItems: 'center', justifyContent: 'center'},
@@ -11,11 +13,13 @@ const styles = StyleSheet.create({
 
 export default function App(): JSX.Element {
   return (
-    // <View style={[StyleSheet.absoluteFill, styles.center, styles.white]}>
-    //   <Text testID="tid-message">'Hello world</Text>
-    // </View>
-    // <Mint />
-    // <Leaderboard />
-    <Compete />
+    <Provider store={store}>
+      {/* <View style={[StyleSheet.absoluteFill, styles.center, styles.white]}>
+        <Text testID="tid-message">'Hello world</Text>
+      </View>
+      <Mint />
+      <Leaderboard /> */}
+      <Compete />
+    </Provider>
   );
 }
