@@ -4,6 +4,7 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Provider} from 'react-redux';
 import Boot from './components/Boot/Boot';
 import Garage from './screens/Garage/Garage';
+import OwnedNFT from './screens/OwnedNFT/OwnedNFT';
 import store from './store';
 
 const styles = StyleSheet.create({
@@ -31,7 +32,7 @@ const HomePage = () => {
     return (
       <>
         <Boot />
-        <Garage />
+        <OwnedNFT />
       </>
     );
 

@@ -172,18 +172,6 @@ const Mint = () => {
                 {description.substring(0, 200)}...
               </Text>
             </View>
-            <View style={styles.constructorInfo}>
-              <Text style={styles.NFTInfoLabel}>Know your constructor</Text>
-              <Text style={styles.constructorDescription}>
-                {description.substring(0, 200)}...
-              </Text>
-            </View>
-            <View style={styles.constructorInfo}>
-              <Text style={styles.NFTInfoLabel}>Know your constructor</Text>
-              <Text style={styles.constructorDescription}>
-                {description.substring(0, 200)}...
-              </Text>
-            </View>
           </ScrollView>
           <View style={styles.mintButtonView}>
             <LinearGradient
