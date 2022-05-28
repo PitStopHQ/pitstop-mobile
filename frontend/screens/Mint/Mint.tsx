@@ -11,6 +11,7 @@ import React, {useMemo, useState} from 'react';
 import {LinearGradient} from 'expo-linear-gradient';
 import DropDownPicker from 'react-native-dropdown-picker';
 import TEAMS from '../../../data/teams.json';
+import AppBar from '../../components/AppBar/AppBar';
 
 import styles from './Mint.style';
 import theme from '../../theme';
@@ -111,21 +112,7 @@ const Mint = () => {
 
   return (
     <View style={styles.screen}>
-      <StatusBar animated={true} backgroundColor="#CB2D3E" />
-      <LinearGradient
-        start={[0, 1]}
-        end={[1, 0]}
-        colors={['#CB2D3E', '#EF473A']}
-        style={styles.titleView}>
-        <Text style={styles.title}>Mint</Text>
-        <Image
-          style={styles.profileLogo}
-          source={{
-            uri: 'https://reactnative.dev/img/tiny_logo.png',
-          }}
-        />
-      </LinearGradient>
-
+      <AppBar title="Mint" />
       <View style={styles.container}>
         <ImageBackground
           source={{
