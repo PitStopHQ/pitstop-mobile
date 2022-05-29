@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 import AppBar from '../../components/AppBar/AppBar';
 import BackConstructor from '../../components/BackConstructor/BackConstructor';
 import BackDriver from '../../components/BackDriver/BackDriver';
+import DriverBacked from '../../components/DriverBacked/DriverBacked';
 import UpcomingRace from '../../components/UpcomingRace/UpcomingRace';
 import {RootState} from '../../store/rootReducer';
 
@@ -25,7 +26,7 @@ const Compete = () => {
         style={{width: '100%', height: '100%'}}>
         <ScrollView style={styles.container}>
           <UpcomingRace />
-          {user.driverwager ? <Text>ok</Text> : <BackDriver />}
+          {user.driverwager ? <DriverBacked /> : <BackDriver />}
           {/* <BackConstructor /> */}
         </ScrollView>
       </ImageBackground>

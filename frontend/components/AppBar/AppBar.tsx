@@ -26,7 +26,7 @@ const AppBar = ({title}: IAppBarProps) => {
         colors={[theme.colors.redOne, theme.colors.redTwo]}
         style={styles.titleView}>
         <Text style={styles.title}>{title}</Text>
-        {!bootLoading && user && user.pfp && (
+        {/* {!bootLoading && user && user.pfp && (
           <TouchableOpacity onPress={killSession}>
             <Image
               style={styles.profileLogo}
@@ -35,7 +35,7 @@ const AppBar = ({title}: IAppBarProps) => {
               }}
             />
           </TouchableOpacity>
-        )}
+        )} */}
       </LinearGradient>
     </>
   );

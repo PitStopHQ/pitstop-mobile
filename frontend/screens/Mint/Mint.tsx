@@ -6,6 +6,7 @@ import {
   ScrollView,
   Button,
   ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
 import React, {useMemo, useState} from 'react';
 import {LinearGradient} from 'expo-linear-gradient';
@@ -15,6 +16,7 @@ import AppBar from '../../components/AppBar/AppBar';
 
 import styles from './Mint.style';
 import theme from '../../theme';
+import useNFT from '../../hooks/useNFT';
 
 const dropdownItems = TEAMS.map(team => {
   return {
@@ -102,6 +104,8 @@ const Mint = () => {
   const [value, setValue] = useState('mclaren');
   const [items, setItems] = useState(dropdownItems);
 
+  const {mintNFT} = useNFT();
+
   const liveryName = useMemo(() => {
     return TEAMS.find(team => team.key === value).name;
   }, [value]);
@@ -174,13 +178,15 @@ const Mint = () => {
             </View>
           </ScrollView>
           <View style={styles.mintButtonView}>
-            <LinearGradient
-              start={[0, 1]}
-              end={[1, 0]}
-              colors={[theme.colors.redOne, theme.colors.redTwo]}
-              style={styles.mintButton}>
-              <Text style={styles.mintText}>Mint</Text>
-            </LinearGradient>
+            <TouchableOpacity onPress={async () => await mintNFT(value)}>
+              <LinearGradient
+                start={[0, 1]}
+                end={[1, 0]}
+                colors={[theme.colors.redOne, theme.colors.redTwo]}
+                style={styles.mintButton}>
+                <Text style={styles.mintText}>Mint</Text>
+              </LinearGradient>
+            </TouchableOpacity>
           </View>
         </ImageBackground>
       </View>
