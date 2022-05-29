@@ -19,6 +19,18 @@ Work done at Warpspeed:
 - The more points a player racks up, the more valuable the NFT becomes, and the higher they move up the global leaderboard.
 - Players can also buy and sell these NFT cars at any given time on the in-app marketplace, essentially trading some MATIC for points.
 
+
+## How are NFT points calculated❓
+- We have developed an algorithm to calculate points after every race, which takes into consideration a number of different factors, each with a different weightage in the final points.
+- In decreasing order of weightage, they are:
+- Final race standing, of course.
+- Difference from starting grid position.
+- Fastest lap time in main race.
+- Q3 lap time.
+- Q2 lap time.
+- Q1 lap time. 
+- All lap times for every driver are judged relative to other drivers.
+
 ## Challenges we ran into 🔴
 - The very first challenge was building this whole thing out within 24hrs. We created the web app within a week back then. Even with a little bit of prior knowledge, on paper, it was very difficult to finish the application with the designs and everything within 24hrs but we still wanted to do it and see how far we could push ourselves to build this thing out.
 - This was only our second project using React native hence it was a bit difficult navigating through some errors and issue but we eventually found our way around these issues and made it work.
