@@ -3,6 +3,7 @@ import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Provider} from 'react-redux';
 import Boot from './components/Boot/Boot';
+import Home from './screens/Home/Home';
 import Marketplace from './screens/Marketplace/Marketplace';
 import store from './store';
 
@@ -31,7 +32,7 @@ const HomePage = () => {
     return (
       <>
         <Boot />
-        <Marketplace />
+        <Home />
       </>
     );
 
