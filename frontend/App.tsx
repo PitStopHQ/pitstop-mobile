@@ -3,6 +3,7 @@ import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Provider} from 'react-redux';
 import Boot from './components/Boot/Boot';
+import BuyNFT from './screens/BuyNFT/BuyNFT';
 import Garage from './screens/Garage/Garage';
 import OwnedNFT from './screens/OwnedNFT/OwnedNFT';
 import store from './store';
@@ -32,7 +33,7 @@ const HomePage = () => {
     return (
       <>
         <Boot />
-        <OwnedNFT />
+        <BuyNFT />
       </>
     );
 
