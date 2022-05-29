@@ -1,5 +1,5 @@
 import React from 'react';
-import {ImageBackground, ScrollView, View} from 'react-native';
+import {ImageBackground, ScrollView, Text, View} from 'react-native';
 import {useSelector} from 'react-redux';
 import AppBar from '../../components/AppBar/AppBar';
 import BackConstructor from '../../components/BackConstructor/BackConstructor';
@@ -11,6 +11,7 @@ import styles from './Compete.style';
 
 const Compete = () => {
   const {bootLoading} = useSelector((state: RootState) => state.boot);
+  const {user} = useSelector((state: RootState) => state.user);
 
   console.log('bootLoading', bootLoading);
 
@@ -24,8 +25,8 @@ const Compete = () => {
         style={{width: '100%', height: '100%'}}>
         <ScrollView style={styles.container}>
           <UpcomingRace />
-          <BackDriver />
-          <BackConstructor />
+          {user.driverwager ? <Text>ok</Text> : <BackDriver />}
+          {/* <BackConstructor /> */}
         </ScrollView>
       </ImageBackground>
     </View>

@@ -1,4 +1,13 @@
-import {View, Text, Image} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  Modal,
+  Alert,
+  Pressable,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native';
 import React, {useMemo, useState} from 'react';
 import TEAMS from '../../../data/teams.json';
 import DRIVERS from '../../../data/drivers.json';
@@ -6,6 +15,9 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import theme from '../../theme';
 import styles from './BackDriver.style';
 import {LinearGradient} from 'expo-linear-gradient';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store/rootReducer';
+import useUser from '../../hooks/useUser';
 
 const dropdownItems = TEAMS.map(team => {
   return {
@@ -89,6 +101,13 @@ const dropdownItems = TEAMS.map(team => {
 });
 
 const BackDriver = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const {garage} = useSelector((state: RootState) => state.garage);
+  const {address, token} = useSelector((state: RootState) => state.auth);
+  const {bootLoading} = useSelector((state: RootState) => state.boot);
+  const {fetchUser} = useUser();
+
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('mclaren');
   const [items, setItems] = useState(dropdownItems);
@@ -100,8 +119,68 @@ const BackDriver = () => {
     return DRIVERS[`${value}`][1];
   }, [value]);
 
+  async function backDriver(driver: string, itemId: number) {
+    const response = await fetch(
+      `https://playpitstop.racing/api/backdriver?token=${token}&driver=${driver}&itemId=${itemId}`,
+    );
+    const data = await response.json();
+    await fetchUser(token);
+    setModalVisible(false);
+  }
+
+  const [selectedDriver, setSelectedDriver] = useState('');
+
   return (
     <View style={styles.backDriverView}>
+      <Modal animationType="slide" transparent={true} visible={modalVisible}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalTitle}>Select a car from your garage</Text>
+            {bootLoading ? (
+              <Text style={{color: '#fff'}}>Loading</Text>
+            ) : garage.length > 0 ? (
+              <View style={styles.garageGrid}>
+                <FlatList
+                  columnWrapperStyle={styles.garageRow}
+                  numColumns={2}
+                  data={garage}
+                  extraData={garage}
+                  renderItem={({item, index}) => {
+                    return (
+                      <TouchableOpacity
+                        onPress={() => backDriver(selectedDriver, item.itemId)}>
+                        <LinearGradient
+                          colors={[
+                            theme.colors.gray.lighter,
+                            theme.colors.gray.lightest,
+                          ]}
+                          style={styles.garageCard}>
+                          <View style={styles.garageCardImageView}>
+                            <Image
+                              resizeMode="contain"
+                              source={{uri: item.image}}
+                              style={styles.garageCardImage}
+                            />
+                          </View>
+                          <Text style={styles.garageCardText}>{item.name}</Text>
+                        </LinearGradient>
+                      </TouchableOpacity>
+                    );
+                  }}
+                  keyExtractor={item => item.itemId}
+                />
+              </View>
+            ) : (
+              <div className="flex items-center justify-center w-full h-full">
+                <h1 className="text-white text-center font-semibold text-lg">
+                  No cars in your garage yet!
+                </h1>
+              </div>
+            )}
+          </View>
+        </View>
+      </Modal>
+
       <Text style={styles.backDriverTitle}>Driver</Text>
       <DropDownPicker
         listMode="SCROLLVIEW"
@@ -136,13 +215,19 @@ const BackDriver = () => {
           <View style={styles.driverInfo}>
             <Text style={styles.driverName}>{driverOne.name}</Text>
             <Text style={styles.teamName}>{driverOne.name}</Text>
-            <LinearGradient
-              start={[0, 1]}
-              end={[1, 0]}
-              colors={[theme.colors.redOne, theme.colors.redTwo]}
-              style={styles.supportButton}>
-              <Text style={styles.supportText}>Support</Text>
-            </LinearGradient>
+            <TouchableOpacity
+              onPress={() => {
+                setSelectedDriver(driverOne.key);
+                setModalVisible(true);
+              }}>
+              <LinearGradient
+                start={[0, 1]}
+                end={[1, 0]}
+                colors={[theme.colors.redOne, theme.colors.redTwo]}
+                style={styles.supportButton}>
+                <Text style={styles.supportText}>Support</Text>
+              </LinearGradient>
+            </TouchableOpacity>
           </View>
         </View>
         <View style={styles.teamDriver}>
@@ -152,13 +237,19 @@ const BackDriver = () => {
           <View style={styles.driverInfo}>
             <Text style={styles.driverName}>{driverTwo.name}</Text>
             <Text style={styles.teamName}>{driverTwo.name}</Text>
-            <LinearGradient
-              start={[0, 1]}
-              end={[1, 0]}
-              colors={[theme.colors.redOne, theme.colors.redTwo]}
-              style={styles.supportButton}>
-              <Text style={styles.supportText}>Support</Text>
-            </LinearGradient>
+            <TouchableOpacity
+              onPress={() => {
+                setSelectedDriver(driverTwo.key);
+                setModalVisible(true);
+              }}>
+              <LinearGradient
+                start={[0, 1]}
+                end={[1, 0]}
+                colors={[theme.colors.redOne, theme.colors.redTwo]}
+                style={styles.supportButton}>
+                <Text style={styles.supportText}>Support</Text>
+              </LinearGradient>
+            </TouchableOpacity>
           </View>
         </View>
       </View>

@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.13.4",
+    "@react-navigation/bottom-tabs": "^6.3.1",
+    "@react-navigation/native": "^6.0.10",
     "@walletconnect/react-native-dapp": "1.6.1",
     "@walletconnect/web3-provider": "^1.7.8",
     "axios": "^0.27.2",
@@ -22,6 +24,8 @@
     "react-native-dropdown-picker": "^5.4.2",
     "react-native-get-random-values": "1.5.0",
     "react-native-localhost": "1.0.0",
+    "react-native-safe-area-context": "4.2.4",
+    "react-native-screens": "~3.11.1",
     "react-native-stream": "0.1.9",
     "react-native-svg": "9.6.4",
     "react-native-web": "0.17.7",
